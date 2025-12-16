@@ -372,7 +372,6 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
               <SidebarLink to="/rentals" icon={Car} label="Rent a Car" collapsed={isCollapsed} onClick={() => setIsMobileOpen(false)} />
               <SidebarLink to="/bookings" icon={List} label="My Bookings" collapsed={isCollapsed} onClick={() => setIsMobileOpen(false)} />
               <SidebarLink to="/services" icon={Wrench} label="Book Service" collapsed={isCollapsed} onClick={() => setIsMobileOpen(false)} />
-              <SidebarLink to="/bookings" icon={MapPin} label="Track Location" collapsed={isCollapsed} onClick={() => setIsMobileOpen(false)} />
               <SidebarLink to="/profile" icon={Settings} label="Profile" collapsed={isCollapsed} onClick={() => setIsMobileOpen(false)} />
             </>
           )}

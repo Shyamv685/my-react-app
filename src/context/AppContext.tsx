@@ -48,7 +48,11 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [role, setRoleState] = useState<UserRole>(UserRole.USER);
   const [currentUser, setCurrentUser] = useState<User | Driver>(DEFAULT_USER);
   const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
-  
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem('darkMode');
+    return saved ? JSON.parse(saved) : false;
+  });
+
   // Data States
   const [cars, setCars] = useState<Car[]>([]);
   const [drivers, setDrivers] = useState<Driver[]>([]);
@@ -459,6 +463,12 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const openEditProfile = () => setIsEditProfileOpen(true);
   const closeEditProfile = () => setIsEditProfileOpen(false);
 
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    localStorage.setItem('darkMode', JSON.stringify(newMode));
+  };
+
   return (
     <AppContext.Provider value={{
       currentUser,
@@ -484,7 +494,9 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       clearNotifications,
       isEditProfileOpen,
       openEditProfile,
-      closeEditProfile
+      closeEditProfile,
+      darkMode,
+      toggleDarkMode
     }}>
       {children}
     </AppContext.Provider>
